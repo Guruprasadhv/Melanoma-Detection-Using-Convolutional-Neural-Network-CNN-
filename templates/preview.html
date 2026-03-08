@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <title>Preview</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
+
+     <!-- MENU BAR -->
+     <nav class="navbar navbar-expand-lg fixed-top">
+          <div class="container">
+               <a class="navbar-brand" href="{{ url_for('index') }}">Melanoma Detection</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-lg-auto">
+                         <li class="nav-item">
+                              <a href="{{ url_for('first')}}" class="nav-link smoothScroll">HOME</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ url_for('preview')}}" class="nav-link smoothScroll">PREVIEW</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ url_for('performance')}}"
+                                   class="nav-link smoothScroll">PERFORMANCE_ANALYSIS</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ url_for('chart')}}" class="nav-link smoothScroll">CHART</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ url_for('logout')}}" class="nav-link smoothScroll">LOGOUT</a>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+     </nav>
+
+     <!-- HERO -->
+     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+          <div class="bg-overlay"></div>
+          <div class="container">
+               <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto col-12">
+                         <div class="hero-text mt-5 text-center">
+                              <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">MELANOMA DETECTION USING
+                                   CNN</h1>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- CONTACT -->
+     <section class="contact section" id="contact">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-30 col-lg-70" style="margin-left:300px">
+                         <div class="heading-section ftco-animate mb-5">
+                              <center>
+                                   <h2 class="mb-4">Melanoma Detection</h2>
+                              </center>
+
+                              <center>
+                                   <div class="content">
+                                        <div class="container-fluid" style="margin-left:50px">
+                                             <div class="row">
+                                                  <div class="col-md-12">
+                                                       <div class="card">
+                                                            <div class="card-body">
+                                                                 <div id='style' class="container-fluid content">
+                                                                      <div id="output" class="container"
+                                                                           style="margin-left:-50px">
+                                                                           {% if img_data and prediction %}
+                                                                           <ol class="list-unstyled row stylized">
+                                                                                <li class="col-md-12 col-sm-6">
+                                                                                     <h3>Melanoma Disease Detection</h3>
+                                                                                     <br>
+                                                                                     <img src="data:image/jpeg;base64,{{img_data}}"
+                                                                                          style="max-width: 200px; height: auto; display: block; margin: 0 auto;">
+                                                                                     <br><br><br>
+                                                                                     <h3>Prediction: {{prediction}}</h3>
+                                                                                     <br>
+                                                                                </li>
+                                                                           </ol>
+                                                                           <br>
+                                                                           <div class="text-center">
+                                                                                <a href="{{ url_for('performance') }}"
+                                                                                     style="font-weight: bold; padding: 12px 30px; border: 2px solid black; border-radius: 5px; color: black; background-color: transparent; text-decoration: none; display: inline-block;">
+                                                                                     Next </a>
+                                                                           </div>
+                                                                           <br>
+                                                                           {% else %}
+                                                                           <div class="text-center">
+                                                                                <p>No prediction data available. Please
+                                                                                     upload an image first.</p>
+                                                                                <a href="{{ url_for('index') }}"
+                                                                                     class="btn btn-primary">Upload
+                                                                                     Image</a>
+                                                                           </div>
+                                                                           {% endif %}
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </center>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <!-- SCRIPTS -->
+     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/smoothscroll.js') }}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <title>performance</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../static/css/aos.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="../static/css/style.css">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+     <!--
+Tooplate 2119 Gymso Fitness
+https://www.tooplate.com/view/2119-gymso-fitness
+-->
+</head>
+
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
+
+     <!-- MENU BAR -->
+     <nav class="navbar navbar-expand-lg fixed-top">
+          <div class="container">
+
+               <a class="navbar-brand" href="index.html">Melanoma Detection</a>
+
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+               </button>
+
+               <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-lg-auto">
+                         <li class="nav-item">
+                              <a href="{{ url_for('first')}}" class="nav-link smoothScroll">Home</a>
+                         </li>
+
+
+                         <li class="nav-item">
+                              <a href="{{ url_for('index')}}" class="nav-link smoothScroll">Preview</a>
+                         </li>
+
+                         <li class="nav-item">
+                              <a href="{{ url_for('performance')}}"
+                                   class="nav-link smoothScroll">performance_analysis</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ url_for('chart')}}" class="nav-link smoothScroll">Chart</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="{{ url_for('logout')}}" class="nav-link smoothScroll">LOGOUT</a>
+                         </li>
+                    </ul>
+
+
+               </div>
+
+          </div>
+     </nav>
+
+
+     <!-- HERO -->
+     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+
+          <div class="bg-overlay"></div>
+
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-8 col-md-10 mx-auto col-12">
+                         <div class="hero-text mt-5 text-center">
+
+
+                              <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Melanoma Detection Using
+                                   Cnn</h1>
+
+
+
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+     <div class="col-md-30 col-lg-70 results-offset">
+          <section class="ftco-section ftco-no-pt ftco-no-pb">
+               <div class="container-fluid px-0">
+                    <div class="row d-flex no-gutters">
+                         <div class="col-md-15  ftco-animate makereservation p-4 p-md-5">
+                              <div>
+                                   <div class="heading-section ftco-animate">
+
+                                        <header>
+
+                                             <div class="section-title">
+
+                                                  <center>
+                                                       <div>
+                                                            <h1>PERFORMANC ANALYSIS </h1>
+                                                       </div>
+                                                       <br>
+                                                       <br>
+                                                       <div><span class="metric-item">
+                                                                 Accuracy: </span>
+                                                            <span class="metric-value">
+                                                                 {{ accuracy }}</span>
+                                                       </div>
+                                                       <br>
+                                                       <div><span class="metric-item">
+                                                                 Precision:</span>
+                                                            <span class="metric-value">
+                                                                 {{ precision }}</span>
+                                                       </div>
+                                                       <br>
+                                                       <div><span class="metric-item">
+                                                                 Recall: </span>
+                                                            <span class="metric-value metric-value-large-margin">
+                                                                 {{ recall }}</span>
+                                                       </div>
+                                                       <br>
+                                                       <div><span class="metric-item">
+                                                                 F-Measure: </span>
+                                                            <span class="metric-value metric-value-small-margin">
+                                                                 {{ f1_score }}</span>
+                                                       </div>
+                                                       <br><br>
+                                                       <center>
+                                                            <div><span class="confusion-heading">
+                                                                      <h1>Confusion Matrix</h1>
+                                                                 </span>
+                                                            </div>
+                                                            <div class="matrix-wrapper">
+                                                                 <table class="matrix-table">
+                                                                      <tr>
+                                                                           <td colspan="2" class="matrix-header-cell">
+                                                                                Confusion Matrix</td>
+                                                                           <td class="matrix-header-cell">
+                                                                                True label</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                           <td class="matrix-row-label">
+                                                                                benign melanoma lesion</td>
+                                                                           <td class="matrix-cell cell-tn">
+                                                                                {{ cm_00 }}</td>
+                                                                           <td class="matrix-cell cell-fp">
+                                                                                {{ cm_01 }}</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                           <td class="matrix-row-label">
+                                                                                malignant melanoma lesion</td>
+                                                                           <td class="matrix-cell cell-fn">
+                                                                                {{ cm_10 }}</td>
+                                                                           <td class="matrix-cell cell-tp">
+                                                                                {{ cm_11 }}</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                           <td></td>
+                                                                           <td class="matrix-row-label"
+                                                                                style="text-align: center;">
+                                                                                benign melanoma lesion</td>
+                                                                           <td class="matrix-row-label"
+                                                                                style="text-align: center;">
+                                                                                malignant melanoma lesion</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                           <td colspan="3" class="predicted-label-row">
+                                                                                Predicted label</td>
+                                                                      </tr>
+                                                                 </table>
+                                                            </div>
+                                                       </center>
+                                                       <br><br>
+                                                       <div style="text-align: center;">
+                                                            <a href="{{ url_for('chart') }}" class="btn-next">
+                                                                 Next </a>
+                                                       </div>
+
+
+
+                                             </div>
+
+
+
+</body>
+</header>
+
+
+
+</div>
+</div>
+</section>
+
+</div>
+<!-- FOOTER -->
+<footer class="site-footer">
+     <div class="container">
+          <div class="row">
+
+               <div class="ml-auto col-lg-4 col-md-5">
+
+               </div>
+
+               <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+
+               </div>
+
+          </div>
+     </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel"
+     aria-hidden="true">
+     <div class="modal-dialog" role="document">
+
+          <div class="modal-content">
+               <div class="modal-header">
+
+
+               </div>
+
+               <div class="modal-body">
+                    <form class="membership-form webform" role="form">
+                         <input type="text" class="form-control" name="cf-name" placeholder="John Doe">
+
+                         <input type="email" class="form-control" name="cf-email" placeholder="Johndoe@gmail.com">
+
+                         <input type="tel" class="form-control" name="cf-phone" placeholder="123-456-7890"
+                              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+
+                    </form>
+               </div>
+
+               <div class="modal-footer"></div>
+
+          </div>
+     </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/aos.js"></script>
+<script src="../static/js/smoothscroll.js"></script>
+
+
+</body>
+
+</html>

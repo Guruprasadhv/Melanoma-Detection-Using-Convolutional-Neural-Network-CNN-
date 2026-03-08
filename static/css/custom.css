@@ -1,0 +1,202 @@
+/* ====== ANALYZING PAGE ====== */
+.analyzing-page {
+    margin: 0;
+    background: #000;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ====== LOADER OVERLAY ====== */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* ====== SPINNER ====== */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #333;
+    border-top: 6px solid #00e5ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ====== LOADING TEXT ====== */
+.loading-text {
+    color: #aaa;
+    font-size: 18px;
+}
+
+.dots::after {
+    content: '';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+
+    33% {
+        content: '.';
+    }
+
+    66% {
+        content: '..';
+    }
+
+    100% {
+        content: '...';
+    }
+}
+
+/* ====== PERFORMANCE ANALYSIS PAGE ====== */
+
+/* Layout & Typography */
+.results-offset {
+    margin-left: 300px;
+}
+
+.performance-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.metric-item {
+    color: black;
+    font-size: 30px;
+    margin-left: 50px;
+}
+
+.metric-value {
+    color: black;
+    font-size: 24px;
+    margin-left: 80px;
+}
+
+.metric-value-large-margin {
+    margin-left: 140px;
+}
+
+.metric-value-small-margin {
+    margin-left: 40px;
+}
+
+.confusion-heading {
+    margin-left: 40px;
+    color: red;
+    font-size: 24px;
+}
+
+/* Confusion Matrix Table */
+.matrix-wrapper {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+}
+
+.matrix-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.matrix-header-cell {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.matrix-vertical-label {
+    writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    text-orientation: mixed;
+    background-color: #e0e0e0;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.matrix-row-label {
+    background-color: #e0e0e0;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.matrix-cell {
+    border: 2px solid #333;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Matrix Colors */
+.cell-tn {
+    /* True Negative */
+    background-color: #87CEEB;
+    /* SkyBlue */
+}
+
+.cell-fp {
+    /* False Positive */
+    background-color: #FFB6C1;
+    /* Pink */
+}
+
+.cell-fn {
+    /* False Negative */
+    background-color: #FFB6C1;
+    /* Pink */
+}
+
+.cell-tp {
+    /* True Positive */
+    background-color: #4169E1;
+    /* RoyalBlue */
+    color: white;
+}
+
+.predicted-label-row {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Buttons */
+.btn-next {
+    font-weight: bold;
+    padding: 12px 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-next:hover {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+}
